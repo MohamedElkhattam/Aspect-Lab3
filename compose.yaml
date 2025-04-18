@@ -1,0 +1,9 @@
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=lab3_schema'
+      - 'MYSQL_PASSWORD=cactusPlant'
+      - 'MYSQL_ROOT_PASSWORD=cactusPlant'
+    ports:
+      - '3306'
