@@ -1,5 +1,6 @@
 package com.Lab3.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,11 +19,16 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
     private String name;
 
+    @Column(name = "email")
+    private String email;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Expense> expenses = new ArrayList<>();
+    @JsonManagedReference
+    private List<Expense> expenses;
 }
